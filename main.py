@@ -1,46 +1,43 @@
+# Assets: https://techwithtim.net/wp-content/uploads/2020/09/assets.zip
 import pygame
-from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE
-from checkers.board import Board
+from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE, RED
+from checkers.game import Game
+# from minimax.algorithm import minimax
 
-pygame.init()
 FPS = 60
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Checkers')
 
 def get_row_col_from_mouse(pos):
-  x, y = pos
-  row = y // SQUARE_SIZE
-  col = x // SQUARE_SIZE
-  return row, col
+    x, y = pos
+    row = y // SQUARE_SIZE
+    col = x // SQUARE_SIZE
+    return row, col
 
 def main():
-  run = True
-  clock = pygame.time.Clock()
-  board = Board()
-  
-  piece = board.get_piece(0,1)
-  board.move(piece, 4, 3)
-  
-  while run:
-    clock.tick(FPS)
-    
-    for event in pygame.event.get():
-      if event.type == pygame.QUIT:
-        run = False
-        
-        
-      if event.type == pygame.MOUSEBUTTONDOWN:
-        pos = pygame.mouse.get_pos()
-        row, col = get_row_col_from_mouse(pos)
-        piece = board.get_piece(row, col)
-        
-      
-    board.draw(WIN)
-    pygame.display.update()
+    run = True
+    clock = pygame.time.Clock()
+    game = Game(WIN)
 
-        
-  pygame.quit()
-        
-        
-  main()
+    while run:
+        clock.tick(FPS)
+
+        if game.winner() != None:
+            print(game.winner())
+            run = False
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+            
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                pos = pygame.mouse.get_pos()
+                row, col = get_row_col_from_mouse(pos)
+                game.select(row, col)
+
+        game.update()
+    
+    pygame.quit()
+
+main()
