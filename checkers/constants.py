@@ -4,7 +4,7 @@ WIDTH, HEIGHT = 800, 800
 ROWS, COLS = 8, 8
 SQUARE_SIZE = WIDTH//COLS
 
-# rgb
+# rgb (0, 0, 0)
 RED = (255, 0, 0)
 WHITE = (255, 253, 208)
 BLACK = (0, 0, 0)
