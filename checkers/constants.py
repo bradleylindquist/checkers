@@ -6,9 +6,10 @@ SQUARE_SIZE = WIDTH//COLS
 
 # rgb
 RED = (255, 0, 0)
-WHITE = (255, 255, 255)
+WHITE = (255, 253, 208)
 BLACK = (0, 0, 0)
 BLUE = (0, 0, 255)
 GREY = (128,128,128)
+GREEN = (1, 150, 32)
 
-CROWN = pygame.transform.scale(pygame.image.load('checkers/yellow-k.jpeg'), (44, 25))
+CROWN = pygame.transform.scale(pygame.image.load('checkers/LFC.png'), (65, 65))
