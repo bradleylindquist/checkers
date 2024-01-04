@@ -12,4 +12,6 @@ BLUE = (0, 0, 255)
 GREY = (128,128,128)
 GREEN = (1, 150, 32)
 
-CROWN = pygame.transform.scale(pygame.image.load('checkers/LFC.png'), (65, 65))
+CROWN = pygame.transform.scale(pygame.image.load('checkers/yellow-k3.webp'), (65, 65))
+LFC = pygame.transform.scale(pygame.image.load('checkers/LFC.png'), (65, 65))
+CFC = pygame.transform.scale(pygame.image.load('checkers/CFC.png'), (65, 65))

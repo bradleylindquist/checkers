@@ -1,4 +1,4 @@
-from .constants import RED, WHITE, SQUARE_SIZE, GREY, CROWN
+from .constants import RED, WHITE, SQUARE_SIZE, GREY, CROWN, LFC, BLUE, CFC
 import pygame
 
 class Piece:
@@ -22,10 +22,23 @@ class Piece:
         self.king = True
     
     def draw(self, win):
-        radius = SQUARE_SIZE//2 - self.PADDING
-        pygame.draw.circle(win, WHITE, (self.x, self.y), radius + self.OUTLINE)
-        pygame.draw.circle(win, self.color, (self.x, self.y), radius)
-        if self.king:
+      if self.color == BLUE:
+        #CFC
+          radius = SQUARE_SIZE//2 - self.PADDING
+          pygame.draw.circle(win, WHITE, (self.x, self.y), radius + self.OUTLINE)
+          pygame.draw.circle(win, BLUE, (self.x, self.y), radius)
+          win.blit(CFC, (self.x - CFC.get_width()//2, self.y - CFC.get_height()//2))
+          
+          if self.king:
+              win.blit(CROWN, (self.x - CROWN.get_width()//2, self.y - CROWN.get_height()//2))
+      else:        
+        #LFC
+          radius = SQUARE_SIZE//2 - self.PADDING
+          pygame.draw.circle(win, WHITE, (self.x, self.y), radius + self.OUTLINE)
+          pygame.draw.circle(win, RED, (self.x, self.y), radius)
+          win.blit(LFC, (self.x - LFC.get_width()//2, self.y - LFC.get_height()//2))
+        
+          if self.king:
             win.blit(CROWN, (self.x - CROWN.get_width()//2, self.y - CROWN.get_height()//2))
 
     def move(self, row, col):
